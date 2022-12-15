@@ -41,7 +41,7 @@
 
 ## Key Features
 
-* Easy to Hide
+* Autostart on windows login
   - you need to bind the file. Also you can create a windows register file for create an autostart ghost process on windows login.
 * FUD not detected by antivirus software. 
 * Create a .txt log file, easy to send.
